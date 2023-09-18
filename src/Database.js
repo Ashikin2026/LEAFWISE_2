@@ -1,7 +1,29 @@
+console.log("Here is Database.js")
+
+//-----------------------------------DATABASE CDN CONFIG----------------------------------------//
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getDatabase, ref, child, onValue, get, query, limitToFirst, limitToLast, orderByChild, startAt, startAfter, endAt, endBefore, equalTo } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDYzNxOVmMbrHxggHzEzzy8wF8_-b-mepY",
+    authDomain: "leafwise-2.firebaseapp.com",
+    databaseURL: "https://leafwise-2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "leafwise-2",
+    storageBucket: "leafwise-2.appspot.com",
+    messagingSenderId: "1005980205286",
+    appId: "1:1005980205286:web:a7523ef5ebb17188a2bb27",
+    measurementId: "G-TKKD4LEBY8"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+
  //---------------------------------------------TABLE CONFIG-----------------------------------------
 var userNo = 0;
 //var tbody = document.getElementById('tbody1');
-var tbody = document.getElementById('tbody2');
+var tbody = document.getElementById('tbody1');
 
 function AddItemToTable(disease,image,probability){//,country,district,latitude,longitude,state,postcode,temperature,humidity,weather,uv){
     let trow = document.createElement('tr');
@@ -83,30 +105,12 @@ function AddAllItemToTable(theUser){
 userNo=0;
 tbody.innerHTML="";
 theUser.forEach(element => {
-    //based on naming in fibase realtime
+    //based on naming in firebase realtime
     AddItemToTable(element.disease, element.image, element.probability);
 });
 }
 
-//-----------------------------------DATABASE CDN CONFIG----------------------------------------//
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getDatabase, ref, child, onValue, get, query, limitToFirst, limitToLast, orderByChild, startAt, startAfter, endAt, endBefore, equalTo } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDYzNxOVmMbrHxggHzEzzy8wF8_-b-mepY",
-    authDomain: "leafwise-2.firebaseapp.com",
-    databaseURL: "https://leafwise-2-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "leafwise-2",
-    storageBucket: "leafwise-2.appspot.com",
-    messagingSenderId: "1005980205286",
-    appId: "1:1005980205286:web:a7523ef5ebb17188a2bb27",
-    measurementId: "G-TKKD4LEBY8"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
 
 //----------------------------------GETTING ALL DATA----------------------------------------------//
 
